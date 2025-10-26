@@ -127,9 +127,9 @@ Unlike traditional TOTP (30 seconds), Reality Check uses a **90-second window** 
 ### 1. Open the App
 
 **Option A: Use the hosted version**
-```
+
 [https://eldeboero.github.io/reality-check/](https://eldeboero.github.io/reality-check/)
-```
+
 
 **Option B: Run locally (recommended for least trust)**
 ```bash
