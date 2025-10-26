@@ -128,10 +128,10 @@ Unlike traditional TOTP (30 seconds), Reality Check uses a **90-second window** 
 
 **Option A: Use the hosted version**
 ```
-https://yourusername.github.io/reality-check/
+[https://eldeboero.github.io/reality-check](https://eldeboero.github.io/reality-check)
 ```
 
-**Option B: Run locally (recommended)**
+**Option B: Run locally (recommended for least trust)**
 ```bash
 # Clone the repo
 git clone https://github.com/eldeboero/reality-check.git
