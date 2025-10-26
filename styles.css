@@ -248,6 +248,17 @@ body {
     text-decoration: underline;
 }
 
+/* Legal disclaimer */
+.disclaimer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding: 15px 10px;
+    opacity: 0.8;
+}
+
 /* Instructions page */
 .instructions-page {
     text-align: left;

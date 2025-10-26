@@ -1,4 +1,4 @@
-const CACHE_NAME = 'reality-check-v14';
+const CACHE_NAME = 'reality-check-v15';
 const urlsToCache = [
   '/',
   '/index.html',
