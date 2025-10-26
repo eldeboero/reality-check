@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Verify identities remotely using cryptographic keys and TOTP">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Reality Check</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Single Main Screen -->
+        <header>
+            <h1>Reality Check</h1>
+            <p class="subtitle">Shared 2FA Codes for Human Verification</p>
+        </header>
+
+        <div class="container">
+            <!-- Main Action Buttons -->
+            <div class="action-buttons">
+                <button id="show-key-btn" class="btn-primary btn-large">
+                    🔑 Show My Key
+                </button>
+                <button id="scan-key-btn" class="btn-primary btn-large">
+                    📷 Scan Their Key
+                </button>
+            </div>
+
+            <!-- Dynamic Status/Result Area -->
+            <div id="status-area" class="status-area">
+                <!-- Content dynamically injected by app.js -->
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="footer-actions">
+                <a href="#" id="instructions-link" class="help-link">How does this work?</a>
+                <button id="clear-cache-btn" class="btn-secondary btn-small">🔄 Clear Cache</button>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container"></div>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://unpkg.com/jsqr@1.4.0/dist/jsQR.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- App Code -->
+    <script src="crypto.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

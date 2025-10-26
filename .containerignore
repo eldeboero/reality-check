@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+DEPLOY.md
+CLAUDE.md
+
+# Container files
+Containerfile
+.containerignore
+
+# Development files
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
