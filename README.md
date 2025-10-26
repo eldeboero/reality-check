@@ -113,7 +113,7 @@ Unlike traditional TOTP (30 seconds), Reality Check uses a **90-second window** 
 
 - ✅ No automated endpoint to attack (human-in-the-loop verification)
 - ✅ Comfortable margin for SMS, Slack, email exchanges
-- ✅ Accounts for typing, network delays, "slow meat bags"
+- ✅ Accounts for typing, network delays, and the inherently slower pace of human communication
 - ✅ Still secure - no replay endpoint, both parties actively engaged
 
 **It's synchronous, just with human latency.** Both parties must be present in real-time; codes from different time windows won't match.
