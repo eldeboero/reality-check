@@ -73,15 +73,15 @@ What's missing is a **lightweight, app-agnostic, human-verifiable authentication
                               ↓
 ┌─────────────────────────────────────────────────────────────────┐
 │ 2. Key Exchange (Trust Bootstrap)                               │
-│    • Alice and Bob meet in person or on trusted video call      │
+│    • Aisha and Raj meet in person or on trusted video call      │
 │    • Exchange public keys via QR codes (bidirectional)          │
 │    • QR format: REALITYCHECK:v1:<base64_public_key>             │
 └─────────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────────┐
 │ 3. Shared Secret Derivation (ECDH)                              │
-│    • ECDH(Alice_private, Bob_public) = Shared_Secret            │
-│    • ECDH(Bob_private, Alice_public) = Same_Shared_Secret       │
+│    • ECDH(Aisha_private, Raj_public) = Shared_Secret            │
+│    • ECDH(Raj_private, Aisha_public) = Same_Shared_Secret       │
 │    • Elliptic Curve Diffie-Hellman on P-256 curve              │
 └─────────────────────────────────────────────────────────────────┘
                               ↓
@@ -246,17 +246,17 @@ Rather than building yet another TOTP app, Reality Check leverages existing, bat
 
 **Real-World Human Timing**:
 ```
-Alice: "What's your code?"
+Aisha: "What's your code?"
   ↓ (5-15s: message transit, notification)
-Bob unlocks phone
+Raj unlocks phone
   ↓ (3-5s: context switch)
-Bob opens authenticator
+Raj opens authenticator
   ↓ (5-10s: scroll, find entry)
-Bob reads code: "294817"
+Raj reads code: "294817"
   ↓ (5-10s: typing)
-Bob: "294817"
+Raj: "294817"
   ↓ (5-15s: message transit)
-Alice receives
+Aisha receives
 
 Total: 28-55 seconds (best case)
 ```

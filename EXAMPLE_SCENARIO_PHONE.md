@@ -1,26 +1,26 @@
 # Example Scenario: Phone Call Verification
 
-**Scenario**: Alice receives a call from someone claiming to be her financial advisor, Bob. Before discussing sensitive account information, they verify each other's identity using Reality Check.
+**Scenario**: Aisha receives a call from someone claiming to be her financial advisor, Raj. Before discussing sensitive account information, they verify each other's identity using Reality Check.
 
-**Setup**: Alice and Bob previously exchanged keys in person and added the TOTP secret to their authenticator apps as "RealityCheck: Bob" and "RealityCheck: Alice" respectively.
+**Setup**: Aisha and Raj previously exchanged keys in person and added the TOTP secret to their authenticator apps as "RealityCheck: Raj" and "RealityCheck: Aisha" respectively.
 
 ---
 
 ## Transcript: Successful Verification
 
-**Bob**: Hi Alice, this is Bob from Clearwater Financial. I wanted to discuss your Q4 portfolio rebalancing.
+**Raj**: Hi Aisha, this is Raj from Clearwater Financial. I wanted to discuss your Q4 portfolio rebalancing.
 
-**Alice**: Hi Bob! Before we get into that, can we do a quick verification?
+**Aisha**: Hi Raj! Before we get into that, can we do a quick verification?
 
-**Bob**: Absolutely, good thinking. Let me pull up my authenticator... okay, I'm ready.
+**Raj**: Absolutely, good thinking. Let me pull up my authenticator... okay, I'm ready.
 
-**Alice**: *(opens authenticator app, finds "RealityCheck: Bob")* Alright, my first three digits are: **four-two-seven**.
+**Aisha**: *(opens authenticator app, finds "RealityCheck: Raj")* Alright, my first three digits are: **four-two-seven**.
 
-**Bob**: Perfect. My last three are: **nine-eight-one**.
+**Raj**: Perfect. My last three are: **nine-eight-one**.
 
-**Alice**: *(checks her full code: 427981)* Confirmed! That matches. We're good.
+**Aisha**: *(checks her full code: 427981)* Confirmed! That matches. We're good.
 
-**Bob**: Great. So about your portfolio...
+**Raj**: Great. So about your portfolio...
 
 ---
 
@@ -32,7 +32,7 @@
 - **No awkward pauses** - natural back-and-forth
 
 **Security Properties Demonstrated**:
-- ✅ **Mutual verification**: Both parties proved identity (Alice verified Bob, Bob verified Alice)
+- ✅ **Mutual verification**: Both parties proved identity (Aisha verified Raj, Raj verified Aisha)
 - ✅ **Split code reading**: Each person reads half, both must match
 - ✅ **Natural flow**: Feels like a normal security check, not a complex ritual
 - ✅ **Synchronous timing**: 90-second window accommodates human conversation speed
@@ -40,7 +40,7 @@
 **Why This Pattern Works**:
 - **First 3 / Last 3 split**: Makes it conversational (back-and-forth), not a lecture
 - **Both parties active**: Neither is passive - both contribute to verification
-- **Quick confirmation**: Alice can immediately verify when Bob provides his half
+- **Quick confirmation**: Aisha can immediately verify when Raj provides his half
 - **Builds trust**: Becomes a habit, like "How are you?" at the start of calls
 
 ---
@@ -49,9 +49,9 @@
 
 ### Pattern 1: Full Code Exchange
 
-**Alice**: My code is four-two-seven, nine-eight-one.
+**Aisha**: My code is four-two-seven, nine-eight-one.
 
-**Bob**: Mine is four-two-seven, nine-eight-one. Match!
+**Raj**: Mine is four-two-seven, nine-eight-one. Match!
 
 **Analysis**:
 - ✅ **Faster** (one round trip)
@@ -61,16 +61,16 @@
 
 ### Pattern 2: One Person Reads, Other Confirms
 
-**Alice**: Can you verify? What's your code?
+**Aisha**: Can you verify? What's your code?
 
-**Bob**: Four-two-seven, nine-eight-one.
+**Raj**: Four-two-seven, nine-eight-one.
 
-**Alice**: Perfect, I've got the same. Confirmed!
+**Aisha**: Perfect, I've got the same. Confirmed!
 
 **Analysis**:
 - ✅ **Simplest** (one-way communication)
 - ✅ **Works well for one-sided verification** (boss calls employee)
-- ⚠️ **Asymmetric** (Alice doesn't prove her identity to Bob)
+- ⚠️ **Asymmetric** (Aisha doesn't prove her identity to Raj)
 - ⚠️ **Less secure** (only one direction verified)
 
 **Note**: For sensitive communications, **always use mutual verification** (both parties verify each other).
@@ -89,24 +89,24 @@
 
 ## Scenario: Failed Verification (Wrong Code)
 
-**Bob**: Hi Alice, this is Bob from Clearwater Financial. I wanted to discuss your account.
+**Raj**: Hi Aisha, this is Raj from Clearwater Financial. I wanted to discuss your account.
 
-**Alice**: Hi Bob! Let's verify first. My first three are: **four-two-seven**.
+**Aisha**: Hi Raj! Let's verify first. My first three are: **four-two-seven**.
 
-**Bob**: *(confused)* Hmm, my last three are... **six-three-two**.
+**Raj**: *(confused)* Hmm, my last three are... **six-three-two**.
 
-**Alice**: *(checks her code: 427981)* Wait, that doesn't match. My full code is four-two-seven, nine-eight-one. Yours should end with nine-eight-one.
+**Aisha**: *(checks her code: 427981)* Wait, that doesn't match. My full code is four-two-seven, nine-eight-one. Yours should end with nine-eight-one.
 
-**Bob**: Let me double-check... *(looks again)* Oh! I was looking at the wrong entry. Let me find "RealityCheck: Alice"... okay, now I see nine-eight-one. Sorry about that!
+**Raj**: Let me double-check... *(looks again)* Oh! I was looking at the wrong entry. Let me find "RealityCheck: Aisha"... okay, now I see nine-eight-one. Sorry about that!
 
-**Alice**: No problem! Okay, confirmed. We're good now.
+**Aisha**: No problem! Okay, confirmed. We're good now.
 
 ---
 
 ## Analysis: Common Failure Modes
 
 **User Error** (Most Common):
-- Wrong entry in authenticator app (Bob looked at different TOTP)
+- Wrong entry in authenticator app (Raj looked at different TOTP)
 - Timing issue (codes about to expire, one person saw old code)
 - Misreading digits (hearing "six" vs "eight")
 
@@ -128,17 +128,17 @@
 
 ## Scenario: Verification Over Noisy Line
 
-**Bob**: Hi Alice, this is Bob calling about—*(static)*
+**Raj**: Hi Aisha, this is Raj calling about—*(static)*
 
-**Alice**: Hey Bob, the line's a bit rough. Let's verify before we lose the connection. My first three: **four, two, seven**.
+**Aisha**: Hey Raj, the line's a bit rough. Let's verify before we lose the connection. My first three: **four, two, seven**.
 
-**Bob**: *(faint)* Okay... my last three: **nine... *(static)* ...one**.
+**Raj**: *(faint)* Okay... my last three: **nine... *(static)* ...one**.
 
-**Alice**: Sorry, could you repeat that? I got "nine" and "one" but missed the middle.
+**Aisha**: Sorry, could you repeat that? I got "nine" and "one" but missed the middle.
 
-**Bob**: Sure! **Nine, eight, one**. Nine-eight-one.
+**Raj**: Sure! **Nine, eight, one**. Nine-eight-one.
 
-**Alice**: Got it! Four-two-seven, nine-eight-one. Confirmed!
+**Aisha**: Got it! Four-two-seven, nine-eight-one. Confirmed!
 
 ---
 
@@ -162,17 +162,17 @@
 **Detailed Timeline**:
 
 ```
-00:00 - Bob: "Hi Alice, this is Bob from Clearwater Financial."
-00:03 - Alice: "Hi Bob! Can we do a quick verification?"
-00:06 - Bob: "Absolutely. Let me pull up my authenticator..."
-00:10 - Bob: "Okay, ready."
-00:12 - Alice: (opens app, finds entry, reads code)
-00:16 - Alice: "My first three are: four-two-seven."
-00:20 - Bob: (reads his code)
-00:22 - Bob: "My last three are: nine-eight-one."
-00:25 - Alice: (checks her full code matches)
-00:27 - Alice: "Confirmed! We're good."
-00:29 - Bob: "Great. So about your portfolio..."
+00:00 - Raj: "Hi Aisha, this is Raj from Clearwater Financial."
+00:03 - Aisha: "Hi Raj! Can we do a quick verification?"
+00:06 - Raj: "Absolutely. Let me pull up my authenticator..."
+00:10 - Raj: "Okay, ready."
+00:12 - Aisha: (opens app, finds entry, reads code)
+00:16 - Aisha: "My first three are: four-two-seven."
+00:20 - Raj: (reads his code)
+00:22 - Raj: "My last three are: nine-eight-one."
+00:25 - Aisha: (checks her full code matches)
+00:27 - Aisha: "Confirmed! We're good."
+00:29 - Raj: "Great. So about your portfolio..."
 
 Total: 29 seconds
 ```
@@ -224,13 +224,13 @@ Total: 29 seconds
 
 ### Without Reality Check
 
-**Bob**: Hi Alice, I need you to wire $50,000 to this new account for the portfolio rebalancing.
+**Raj**: Hi Aisha, I need you to wire $50,000 to this new account for the portfolio rebalancing.
 
-**Alice**: *(uncertain)* Um... okay. Can you email me the details?
+**Aisha**: *(uncertain)* Um... okay. Can you email me the details?
 
-**Bob**: Sure, I'll send it now.
+**Raj**: Sure, I'll send it now.
 
-**Alice**: *(Still uncertain. Is this really Bob? The email could be spoofed. Should I call back? But what if his number is spoofed too?)*
+**Aisha**: *(Still uncertain. Is this really Raj? The email could be spoofed. Should I call back? But what if his number is spoofed too?)*
 
 **Result**: Anxiety, potential fraud, delayed decision-making.
 
@@ -238,15 +238,15 @@ Total: 29 seconds
 
 ### With Reality Check
 
-**Bob**: Hi Alice, I need you to wire $50,000 to a new account for the portfolio rebalancing. Let's verify first.
+**Raj**: Hi Aisha, I need you to wire $50,000 to a new account for the portfolio rebalancing. Let's verify first.
 
-**Alice**: Good idea. My first three: four-two-seven.
+**Aisha**: Good idea. My first three: four-two-seven.
 
-**Bob**: My last three: nine-eight-one.
+**Raj**: My last three: nine-eight-one.
 
-**Alice**: Confirmed! Okay, now about that wire transfer...
+**Aisha**: Confirmed! Okay, now about that wire transfer...
 
-**Bob**: Here are the details...
+**Raj**: Here are the details...
 
 **Result**: **Confidence, security, immediate action.**
 

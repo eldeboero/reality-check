@@ -1,6 +1,6 @@
 # Example Scenario: Initial Setup (In Person)
 
-**Scenario**: Alice and Bob are colleagues who frequently discuss sensitive work matters over the phone. After reading about AI voice cloning and deepfakes in the news, they decide to set up a verification system.
+**Scenario**: Aisha and Raj are colleagues who frequently discuss sensitive work matters over the phone. After reading about AI voice cloning and deepfakes in the news, they decide to set up a verification system.
 
 **Setting**: Coffee shop, Wednesday afternoon
 
@@ -8,169 +8,169 @@
 
 ## Transcript: The Conversation
 
-**Alice**: Did you see that article about the CFO who got scammed with a deepfake voice call? They lost $25 million.
+**Aisha**: Did you see that article about the CFO who got scammed with a deepfake voice call? They lost $25 million.
 
-**Bob**: Yeah, I saw that. It's terrifying. The "CEO" on the call sounded completely authentic. Even verified with the executive assistant.
+**Raj**: Yeah, I saw that. It's terrifying. The "CEO" on the call sounded completely authentic. Even verified with the executive assistant.
 
-**Alice**: Right? And we talk about confidential deals all the time. What if someone impersonated you and asked me to approve a wire transfer?
+**Aisha**: Right? And we talk about confidential deals all the time. What if someone impersonated you and asked me to approve a wire transfer?
 
-**Bob**: Or someone impersonating you asking me for client data. *(pauses)* Honestly, I'm not sure I'd catch it if the voice sounded right.
+**Raj**: Or someone impersonating you asking me for client data. *(pauses)* Honestly, I'm not sure I'd catch it if the voice sounded right.
 
-**Alice**: Same. Caller ID is useless—that's been spoofable for years. And now voices can be cloned from like 10 seconds of audio.
+**Aisha**: Same. Caller ID is useless—that's been spoofable for years. And now voices can be cloned from like 10 seconds of audio.
 
-**Bob**: So... what do we do? We can't just stop having phone calls.
+**Raj**: So... what do we do? We can't just stop having phone calls.
 
-**Alice**: I've been thinking about this. You know how banks use those security token things? The little keychain that shows a number that changes every minute?
+**Aisha**: I've been thinking about this. You know how banks use those security token things? The little keychain that shows a number that changes every minute?
 
-**Bob**: Yeah, I use one for my VPN. It's called TOTP or something.
+**Raj**: Yeah, I use one for my VPN. It's called TOTP or something.
 
-**Alice**: Exactly. What if we did that, but for verifying each other? Before we discuss anything sensitive, we both check the codes and make sure they match.
+**Aisha**: Exactly. What if we did that, but for verifying each other? Before we discuss anything sensitive, we both check the codes and make sure they match.
 
-**Bob**: Huh. That would work. If someone's impersonating you, they wouldn't have the right code.
+**Raj**: Huh. That would work. If someone's impersonating you, they wouldn't have the right code.
 
-**Alice**: Even if they cloned my voice perfectly.
+**Aisha**: Even if they cloned my voice perfectly.
 
-**Bob**: *(pulls out phone)* I already have an authenticator app for work. We'd just need to... I don't know, share a secret key or something?
+**Raj**: *(pulls out phone)* I already have an authenticator app for work. We'd just need to... I don't know, share a secret key or something?
 
-**Alice**: Actually, I found an app that does exactly this. It's called Reality Check. It's open source, no accounts, no data collection. We just exchange keys once, and then we both add the same secret to our authenticator apps.
+**Aisha**: Actually, I found an app that does exactly this. It's called Reality Check. It's open source, no accounts, no data collection. We just exchange keys once, and then we both add the same secret to our authenticator apps.
 
-**Bob**: So we'd both see the same 6-digit code at any given time?
+**Raj**: So we'd both see the same 6-digit code at any given time?
 
-**Alice**: Right. And it changes every 90 seconds. So during a call, we just compare codes. If they match, we know it's really each other.
+**Aisha**: Right. And it changes every 90 seconds. So during a call, we just compare codes. If they match, we know it's really each other.
 
-**Bob**: *(thinks for a moment)* That's... actually pretty clever. And we're already sitting here, so we can do the setup now.
+**Raj**: *(thinks for a moment)* That's... actually pretty clever. And we're already sitting here, so we can do the setup now.
 
-**Alice**: Yeah, that's the point. You have to do the initial key exchange in person—or at least on a video call where you can see each other's faces. That's the trust bootstrap.
+**Aisha**: Yeah, that's the point. You have to do the initial key exchange in person—or at least on a video call where you can see each other's faces. That's the trust bootstrap.
 
-**Bob**: Makes sense. If someone intercepted the very first exchange, they'd have the secret forever. So we do it face-to-face where we know it's really us.
+**Raj**: Makes sense. If someone intercepted the very first exchange, they'd have the secret forever. So we do it face-to-face where we know it's really us.
 
-**Alice**: Exactly.
+**Aisha**: Exactly.
 
 ---
 
 ## Setup Process
 
-**Bob**: Alright, let's do it. What's the app called again?
+**Raj**: Alright, let's do it. What's the app called again?
 
-**Alice**: Reality Check. Here, I'll pull it up on my phone. *(opens browser, navigates to the app)*
+**Aisha**: Reality Check. Here, I'll pull it up on my phone. *(opens browser, navigates to the app)*
 
-**Bob**: *(also opens the app)* Got it. Pretty simple interface.
+**Raj**: *(also opens the app)* Got it. Pretty simple interface.
 
-**Alice**: Okay, I'm going to click "Show My Key." *(QR code appears on Alice's screen)*
+**Aisha**: Okay, I'm going to click "Show My Key." *(QR code appears on Aisha's screen)*
 
-**Bob**: *(clicks "Scan Their Key," holds phone up to scan Alice's QR code)* Got it!
+**Raj**: *(clicks "Scan Their Key," holds phone up to scan Aisha's QR code)* Got it!
 
-*[Alice and Bob exchange keys—Bob shows his QR code, Alice scans it]*
+*[Aisha and Raj exchange keys—Raj shows his QR code, Aisha scans it]*
 
-**Alice**: Okay, so now it's showing me a long string of letters. The TOTP secret. I need to add this to my authenticator app.
+**Aisha**: Okay, so now it's showing me a long string of letters. The TOTP secret. I need to add this to my authenticator app.
 
-**Bob**: *(copies his secret)* Same here. Let me open Authy... Add Account... Manual Entry...
+**Raj**: *(copies his secret)* Same here. Let me open Authy... Add Account... Manual Entry...
 
-**Alice**: *(doing the same)* I'm going to name it "RealityCheck: Bob" so I remember who it's for.
+**Aisha**: *(doing the same)* I'm going to name it "RealityCheck: Raj" so I remember who it's for.
 
-**Bob**: Good idea. I'll do "RealityCheck: Alice."
+**Raj**: Good idea. I'll do "RealityCheck: Aisha."
 
 *[Both add the TOTP secret to their authenticator apps]*
 
-**Alice**: Done! Let me check... my code right now is 427-981.
+**Aisha**: Done! Let me check... my code right now is 427-981.
 
-**Bob**: *(checks his app)* Same! 427-981.
+**Raj**: *(checks his app)* Same! 427-981.
 
-**Alice**: Perfect. We're set.
+**Aisha**: Perfect. We're set.
 
-**Bob**: That was way easier than I expected. Maybe two minutes?
+**Raj**: That was way easier than I expected. Maybe two minutes?
 
-**Alice**: Yeah. And now we never have to do it again. We just verify the codes before sensitive calls.
+**Aisha**: Yeah. And now we never have to do it again. We just verify the codes before sensitive calls.
 
 ---
 
 ## Discussion: Why This Works
 
-**Bob**: So walk me through it. Let's say next week, I get a call from "you" asking me to send a client list.
+**Raj**: So walk me through it. Let's say next week, I get a call from "you" asking me to send a client list.
 
-**Alice**: Right. The first thing you do is say, "Hey, let's verify. What's your code?"
+**Aisha**: Right. The first thing you do is say, "Hey, let's verify. What's your code?"
 
-**Bob**: And if it's really you, you'll give me a code that matches what I see in my app.
+**Raj**: And if it's really you, you'll give me a code that matches what I see in my app.
 
-**Alice**: Exactly. If it's an impersonator—even with a perfect voice clone—they can't generate the right code. They don't have the shared secret.
+**Aisha**: Exactly. If it's an impersonator—even with a perfect voice clone—they can't generate the right code. They don't have the shared secret.
 
-**Bob**: And because we exchanged keys face-to-face just now, we know no one intercepted it.
+**Raj**: And because we exchanged keys face-to-face just now, we know no one intercepted it.
 
-**Alice**: Right. The security is anchored in this moment, right here, where we can see each other.
+**Aisha**: Right. The security is anchored in this moment, right here, where we can see each other.
 
-**Bob**: What about after this? What if someone intercepts the codes during a call?
+**Raj**: What about after this? What if someone intercepts the codes during a call?
 
-**Alice**: Doesn't matter. The codes change every 90 seconds. By the time an attacker could use an intercepted code, it's already expired.
+**Aisha**: Doesn't matter. The codes change every 90 seconds. By the time an attacker could use an intercepted code, it's already expired.
 
-**Bob**: *(impressed)* Okay, I'm sold. This is way better than just hoping I recognize your voice.
+**Raj**: *(impressed)* Okay, I'm sold. This is way better than just hoping I recognize your voice.
 
 ---
 
 ## The Commitment
 
-**Alice**: So here's the thing—this only works if we actually use it. Every time we have a sensitive conversation.
+**Aisha**: So here's the thing—this only works if we actually use it. Every time we have a sensitive conversation.
 
-**Bob**: Agreed. It's like... 15 seconds at the start of a call?
+**Raj**: Agreed. It's like... 15 seconds at the start of a call?
 
-**Alice**: Yeah, barely noticeable. But it becomes a habit. "Hey Bob, before we talk about the merger, let's verify."
+**Aisha**: Yeah, barely noticeable. But it becomes a habit. "Hey Raj, before we talk about the merger, let's verify."
 
-**Bob**: And if someone ever refuses to verify, or the codes don't match...
+**Raj**: And if someone ever refuses to verify, or the codes don't match...
 
-**Alice**: Huge red flag. End the call immediately.
+**Aisha**: Huge red flag. End the call immediately.
 
-**Bob**: Right. No exceptions.
+**Raj**: Right. No exceptions.
 
-**Alice**: *(extends hand)* Deal?
+**Aisha**: *(extends hand)* Deal?
 
-**Bob**: *(shakes hand)* Deal. Let's test it right now. I'll step outside and call you.
+**Raj**: *(shakes hand)* Deal. Let's test it right now. I'll step outside and call you.
 
-**Alice**: Good idea. Let's make sure it works.
+**Aisha**: Good idea. Let's make sure it works.
 
 ---
 
 ## Test Call (A Few Minutes Later)
 
-**Bob**: *(calls from outside)*
+**Raj**: *(calls from outside)*
 
-**Alice**: *(answers)* Hey Bob!
+**Aisha**: *(answers)* Hey Raj!
 
-**Bob**: Hey! Okay, let's verify. My first three digits are: four, two, seven.
+**Raj**: Hey! Okay, let's verify. My first three digits are: four, two, seven.
 
-**Alice**: *(checks app)* Perfect. My last three are: nine, eight, one.
+**Aisha**: *(checks app)* Perfect. My last three are: nine, eight, one.
 
-**Bob**: *(checks his app: 427981)* Match! Okay, this definitely works.
+**Raj**: *(checks his app: 427981)* Match! Okay, this definitely works.
 
-**Alice**: And it felt pretty natural, right? Just part of the greeting.
+**Aisha**: And it felt pretty natural, right? Just part of the greeting.
 
-**Bob**: Yeah, honestly it took like 10 seconds. I can get used to this.
+**Raj**: Yeah, honestly it took like 10 seconds. I can get used to this.
 
-**Alice**: Same. Alright, I think we're good. See you back inside?
+**Aisha**: Same. Alright, I think we're good. See you back inside?
 
-**Bob**: On my way.
+**Raj**: On my way.
 
 ---
 
 ## Reflection: A Week Later
 
-**Bob**: *(on a call with Alice)* You know, we've verified like five times this week, and it's already second nature.
+**Raj**: *(on a call with Aisha)* You know, we've verified like five times this week, and it's already second nature.
 
-**Alice**: Right? It's like checking the padlock icon on a website. You just do it automatically.
+**Aisha**: Right? It's like checking the padlock icon on a website. You just do it automatically.
 
-**Bob**: I've actually started sleeping better. I kept having this background anxiety about whether I'd recognize an impersonation. Now I don't have to worry.
+**Raj**: I've actually started sleeping better. I kept having this background anxiety about whether I'd recognize an impersonation. Now I don't have to worry.
 
-**Alice**: Same. I got a call yesterday from someone claiming to be my bank. I asked them to verify with Reality Check.
+**Aisha**: Same. I got a call yesterday from someone claiming to be my bank. I asked them to verify with Reality Check.
 
-**Bob**: *(laughs)* What did they say?
+**Raj**: *(laughs)* What did they say?
 
-**Alice**: They hung up. Scam call.
+**Aisha**: They hung up. Scam call.
 
-**Bob**: Perfect. That's exactly how it should work.
+**Raj**: Perfect. That's exactly how it should work.
 
-**Alice**: Yeah. I'm thinking about setting this up with my parents too. They're way more vulnerable to these kinds of scams.
+**Aisha**: Yeah. I'm thinking about setting this up with my parents too. They're way more vulnerable to these kinds of scams.
 
-**Bob**: Good idea. My mom fell for a "Microsoft tech support" scam last year. This would have stopped it cold.
+**Raj**: Good idea. My mom fell for a "Microsoft tech support" scam last year. This would have stopped it cold.
 
-**Alice**: Exactly. It's not just for us tech-paranoid people. It's for anyone who wants to know they're really talking to who they think they are.
+**Aisha**: Exactly. It's not just for us tech-paranoid people. It's for anyone who wants to know they're really talking to who they think they are.
 
 ---
 
@@ -190,7 +190,7 @@
 
 1. **Immediate Test**: They verified the system worked right away
 2. **Formed a Habit**: Committed to using it every time
-3. **Positive Reinforcement**: Caught a scam call (Alice's bank impersonator)
+3. **Positive Reinforcement**: Caught a scam call (Aisha's bank impersonator)
 4. **Peace of Mind**: Eliminated background anxiety about impersonation
 5. **Network Effect**: Started thinking about setting up with other contacts
 
@@ -200,37 +200,37 @@
 
 ### "What if I lose my phone?"
 
-**Alice**: Your authenticator app is backed up, right? Authy has cloud backup, Google Authenticator can sync, 1Password stores it in your vault.
+**Aisha**: Your authenticator app is backed up, right? Authy has cloud backup, Google Authenticator can sync, 1Password stores it in your vault.
 
-**Bob**: Oh right, yeah. So even if I lose my phone, I can restore the authenticator app and the codes will still work.
+**Raj**: Oh right, yeah. So even if I lose my phone, I can restore the authenticator app and the codes will still work.
 
-**Alice**: Exactly. Or we just meet up again and re-exchange keys. Takes two minutes.
+**Aisha**: Exactly. Or we just meet up again and re-exchange keys. Takes two minutes.
 
 ---
 
 ### "What if someone steals my phone?"
 
-**Bob**: If someone has my unlocked phone, they can see my codes.
+**Raj**: If someone has my unlocked phone, they can see my codes.
 
-**Alice**: True, but they'd need to know which TOTP entry to look at. And your phone is locked with a PIN or biometric, right?
+**Aisha**: True, but they'd need to know which TOTP entry to look at. And your phone is locked with a PIN or biometric, right?
 
-**Bob**: Yeah, and my authenticator app has its own PIN too.
+**Raj**: Yeah, and my authenticator app has its own PIN too.
 
-**Alice**: So they'd have to: unlock your phone, unlock your authenticator app, and know to look for "RealityCheck: Alice." That's a lot of barriers.
+**Aisha**: So they'd have to: unlock your phone, unlock your authenticator app, and know to look for "RealityCheck: Aisha." That's a lot of barriers.
 
-**Bob**: Fair point. And if my phone is stolen, I'm immediately resetting everything anyway.
+**Raj**: Fair point. And if my phone is stolen, I'm immediately resetting everything anyway.
 
 ---
 
 ### "What if we want to add more people?"
 
-**Alice**: It's pairwise. So if you want to set this up with Carol, you and Carol exchange keys separately.
+**Aisha**: It's pairwise. So if you want to set this up with Jordan, you and Jordan exchange keys separately.
 
-**Bob**: So I'd have "RealityCheck: Alice" and "RealityCheck: Carol" in my app?
+**Raj**: So I'd have "RealityCheck: Aisha" and "RealityCheck: Jordan" in my app?
 
-**Alice**: Right. Each relationship is independent. Carol and I would have our own shared secret if we wanted to verify each other.
+**Aisha**: Right. Each relationship is independent. Jordan and I would have our own shared secret if we wanted to verify each other.
 
-**Bob**: Makes sense. Keeps it simple.
+**Raj**: Makes sense. Keeps it simple.
 
 ---
 
@@ -287,7 +287,7 @@ Month 1:
 
 **Why This Matters**:
 
-The scenario starts with a **concrete, relatable threat**—not abstract FUD (fear, uncertainty, doubt). Alice and Bob:
+The scenario starts with a **concrete, relatable threat**—not abstract FUD (fear, uncertainty, doubt). Aisha and Raj:
 
 1. Recognized they face similar risks (work calls, confidential info)
 2. Acknowledged existing solutions don't work (caller ID, voice recognition)
@@ -352,13 +352,13 @@ The scenario starts with a **concrete, relatable threat**—not abstract FUD (fe
 
 ### Reality Check Pattern: Immediate Action
 
-**Alice**: Did you see that article about the CFO deepfake? *(Concrete threat)*
+**Aisha**: Did you see that article about the CFO deepfake? *(Concrete threat)*
 
-**Bob**: Yeah, it's terrifying. We talk about confidential deals all the time. *(Personal relevance)*
+**Raj**: Yeah, it's terrifying. We talk about confidential deals all the time. *(Personal relevance)*
 
-**Alice**: I found an app that solves this. It takes 5 minutes. *(Specific solution, low effort)*
+**Aisha**: I found an app that solves this. It takes 5 minutes. *(Specific solution, low effort)*
 
-**Bob**: Let's do it right now. *(Immediate commitment)*
+**Raj**: Let's do it right now. *(Immediate commitment)*
 
 *(Setup happens within 15 minutes)*
 

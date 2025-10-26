@@ -77,15 +77,15 @@ Reality Check is a stateless Progressive Web App that acts as a **cryptographic 
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
 │  2. Key Exchange (QR Codes)                                 │
-│     Alice shows QR → Bob scans                              │
-│     Bob shows QR → Alice scans                              │
+│     Aisha shows QR → Raj scans                              │
+│     Raj shows QR → Aisha scans                              │
 │     (In person or via video call)                           │
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
 │  3. Shared Secret (ECDH)                                    │
-│     ECDH(Alice's private, Bob's public) =                   │
-│     ECDH(Bob's private, Alice's public)                     │
+│     ECDH(Aisha's private, Raj's public) =                   │
+│     ECDH(Raj's private, Aisha's public)                     │
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
@@ -151,10 +151,10 @@ python3 -m http.server 8080
 
 **Meet in person or start a video call**, then:
 
-1. **Alice**: Click "🔑 Show My Key" → displays QR code
-2. **Bob**: Click "📷 Scan Their Key" → scan Alice's QR
-3. **Bob**: Click "🔑 Show My Key" → displays QR code
-4. **Alice**: Click "📷 Scan Their Key" → scan Bob's QR
+1. **Aisha**: Click "🔑 Show My Key" → displays QR code
+2. **Raj**: Click "📷 Scan Their Key" → scan Aisha's QR
+3. **Raj**: Click "🔑 Show My Key" → displays QR code
+4. **Aisha**: Click "📷 Scan Their Key" → scan Raj's QR
 
 ### 3. Add TOTP to Authenticator App
 
@@ -163,7 +163,7 @@ After scanning:
 1. Click "📋 Copy Secret"
 2. Open your authenticator app (Authy, Google Authenticator, etc.)
 3. Add account manually
-4. Name it: "RealityCheck: Alice" (or whatever you prefer)
+4. Name it: "RealityCheck: Aisha" (or whatever you prefer)
 5. Paste the secret
 6. Done! Close Reality Check (keys are automatically discarded)
 
@@ -237,8 +237,8 @@ This bootstraps trust. If someone intercepts your *first* exchange, they can imp
 
 In your authenticator app, label it clearly:
 - ✅ "RealityCheck: Mom"
-- ✅ "RC: Bob (Work)"
-- ✅ "Verify: Alice"
+- ✅ "RC: Raj (Work)"
+- ✅ "Verify: Aisha"
 
 #### Step 3: Test It
 
@@ -253,9 +253,9 @@ Do a quick test:
 #### Phone Call Verification
 
 ```
-Alice: "Hey Bob, can you verify?"
-Bob:   "Sure, let me check... 742 891"
-Alice: "Perfect, I see 742 891 too. Confirmed."
+Aisha: "Hey Raj, can you verify?"
+Raj:   "Sure, let me check... 742 891"
+Aisha: "Perfect, I see 742 891 too. Confirmed."
 ```
 
 **Best practice**: Don't say the code *before* they do. Let them read it first, then confirm if it matches.
@@ -263,11 +263,11 @@ Alice: "Perfect, I see 742 891 too. Confirmed."
 #### Text/Slack/Email Verification
 
 ```
-Alice: "Hey Bob - what's your verification code?"
-(Bob checks authenticator app)
-Bob: "294817"
-(Alice checks authenticator app)
-Alice: "Confirmed, that matches."
+Aisha: "Hey Raj - what's your verification code?"
+(Raj checks authenticator app)
+Raj: "294817"
+(Aisha checks authenticator app)
+Aisha: "Confirmed, that matches."
 ```
 
 **Note**: You have 90 seconds, so this works fine for async channels.
@@ -416,7 +416,7 @@ A: No! Once you've added the TOTP secret to your authenticator app, you can clos
 A: Unlimited. Each contact gets their own entry in your authenticator app.
 
 **Q: Can I verify multiple people at once?**
-A: No. Verification is pairwise (Alice↔Bob, Alice↔Carol, Bob↔Carol).
+A: No. Verification is pairwise (Aisha↔Raj, Aisha↔Jordan, Raj↔Jordan).
 
 **Q: What if I switch to a new phone?**
 A: You'll need to:
