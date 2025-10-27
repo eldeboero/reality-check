@@ -1,8 +1,8 @@
 # Reality Check
 
-**Privacy-focused identity verification for remote communications**
+**Enabling 2FA codes for human-to-human verification**
 
-Reality Check verifies identities while communicating remotely. You and a contact exchange keys once (in person or video) to create a shared secret. Add it to your authenticator app, and you'll both see matching 6-digit codes. While talking or messaging in real-time, compare codes—if they match, you're talking to the real person. Protects against SIM swaps, deepfakes, and impersonation.
+Reality Check verifies identities while communicating remotely. You and a contact exchange keys once (in person or video) to create a shared secret. Add it to your authenticator app, and you'll both see matching 6-digit codes. While talking or messaging in real-time, compare codes (ideally each person provides 3 of the 6 digits).  If they match, you're talking to the real person. Protects against SIM swaps, deepfakes, and impersonation.
 
 ---
 
@@ -254,23 +254,24 @@ Do a quick test:
 
 ```
 Aisha: "Hey Raj, can you verify?"
-Raj:   "Sure, let me check... 742 891"
-Aisha: "Perfect, I see 742 891 too. Confirmed."
+Raj:   "Sure, let me check... my first three: 742"
+Aisha: "And my last three: 891"
+Raj:   "Perfect, that matches. Confirmed."
 ```
 
-**Best practice**: Don't say the code *before* they do. Let them read it first, then confirm if it matches.
+**Best practice**: Split the code (first 3 / last 3 digits). Each person recites half, making it conversational and easier to verify.
 
 #### Text/Slack/Email Verification
 
 ```
-Aisha: "Hey Raj - what's your verification code?"
+Aisha: "Hey Raj - let's verify. My first three: 294"
 (Raj checks authenticator app)
-Raj: "294817"
-(Aisha checks authenticator app)
+Raj: "Perfect. My last three: 817"
+(Aisha verifies the full code: 294817)
 Aisha: "Confirmed, that matches."
 ```
 
-**Note**: You have 90 seconds, so this works fine for async channels.
+**Note**: You have 90 seconds, so this works fine for async channels. The split pattern (3+3) makes it conversational even over text.
 
 #### Video Call Verification
 

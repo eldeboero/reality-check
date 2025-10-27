@@ -246,7 +246,7 @@ Rather than building yet another TOTP app, Reality Check leverages existing, bat
 
 **Real-World Human Timing**:
 ```
-Aisha: "What's your code?"
+Aisha: "Let's verify. My first three: 294"
   ↓ (5-15s: message transit, notification)
 Raj unlocks phone
   ↓ (3-5s: context switch)
@@ -254,9 +254,9 @@ Raj opens authenticator
   ↓ (5-10s: scroll, find entry)
 Raj reads code: "294817"
   ↓ (5-10s: typing)
-Raj: "294817"
+Raj: "My last three: 817"
   ↓ (5-15s: message transit)
-Aisha receives
+Aisha receives & confirms match
 
 Total: 28-55 seconds (best case)
 ```

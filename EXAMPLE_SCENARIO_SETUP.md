@@ -72,11 +72,11 @@
 
 *[Both add the TOTP secret to their authenticator apps]*
 
-**Aisha**: Done! Let me check... my code right now is 427-981.
+**Aisha**: Done! Let me check... my first three are: 427.
 
-**Raj**: *(checks his app)* Same! 427-981.
+**Raj**: *(checks his app)* And my last three are: 981. Perfect match!
 
-**Aisha**: Perfect. We're set.
+**Aisha**: Great. We're set.
 
 **Raj**: That was way easier than I expected. Maybe two minutes?
 
