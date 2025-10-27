@@ -1,8 +1,8 @@
 # Reality Check
 
-**Enabling 2FA codes for human-to-human verification**
+**Protect your most important relationships from impersonation attacks**
 
-Reality Check verifies identities while communicating remotely. You and a contact exchange keys once (in person or video) to create a shared secret. Add it to your authenticator app, and you'll both see matching 6-digit codes. While talking or messaging in real-time, compare codes (ideally each person provides 3 of the 6 digits).  If they match, you're talking to the real person. Protects against SIM swaps, deepfakes, and impersonation.
+Reality Check helps you verify your most valuable, trusted contacts when you can't be physically together. You simply generate a shared secret once (in person or video) and add it to your authenticator app.  From then on, you'll both see matching 6-digit codes for each other. While talking or messaging in real-time, compare codes (ideally each person provides 3 of the 6 digits).  If they match, you're talking to the real person. Protects against SIM swaps, deepfakes, and impersonation.
 
 ---
 
@@ -18,8 +18,7 @@ This project includes comprehensive documentation for different audiences:
 
 **Getting Started**:
 - **[README.md](./README.md)** (this file) - Complete user guide, setup instructions, FAQ
-- **[EXAMPLE_SCENARIO_SETUP.md](./EXAMPLE_SCENARIO_SETUP.md)** - Real conversation: two people decide to use Reality Check
-- **[EXAMPLE_SCENARIO_PHONE.md](./EXAMPLE_SCENARIO_PHONE.md)** - Real conversation: verification during a phone call
+- **[EXAMPLE_SCENARIO.md](./EXAMPLE_SCENARIO.md)** - Real conversation showing initial setup and test verification call
 
 **Technical Details**:
 - **[EXECUTIVE_SUMMARY.md](./EXECUTIVE_SUMMARY.md)** - One-page technical overview (threat model, architecture, cryptography)
@@ -61,6 +60,39 @@ Reality Check is a stateless Progressive Web App that acts as a **cryptographic 
 - ❌ A contact manager (no storage, no contact lists)
 - ❌ An authenticator app (use Authy, Google Authenticator, etc.)
 - ❌ A replacement for end-to-end encryption (complementary to, not instead of)
+
+---
+
+## What Reality Check Is NOT
+
+Reality Check is **not** a general-purpose authentication system. Here's what it cannot do:
+
+### ❌ Cannot Verify Strangers
+- No "instant verification" of unknown callers
+- Both parties must pre-exchange keys in person or video
+- Requires pre-established trust relationship
+
+### ❌ Cannot Scale to One-to-Many
+- Not suitable for customer service (1 representative, many customers)
+- Not suitable for IT departments (1 technician, hundreds of employees)
+- Each relationship requires individual key exchange
+- 10 people = 45 pairwise key exchanges needed
+
+### ❌ Cannot Stop Random Scam Calls
+- Only verifies people you've already set up with
+- Cannot verify banks, government agencies, or businesses (unless you personally set it up with a specific representative)
+- Cannot replace caller ID or other first-line defenses
+
+### ❌ Not a Replacement for 2FA
+- This is for human-to-human verification only
+- Cannot authenticate you to websites or services
+- Works alongside (not instead of) traditional 2FA
+
+### ✅ What It IS Good For
+- Verifying a trusted contact during remote communication
+- Protecting against impersonation of people you already know
+- Adding cryptographic certainty to voice/text conversations with specific individuals
+- Small teams where everyone has met in person
 
 ---
 
@@ -398,8 +430,7 @@ reality-check/
 ├── AI_DISCLOSURE.md             # Transparency about AI-generated code
 ├── DEPLOY.md                    # Deployment guide (all platforms)
 ├── CONTAINER.md                 # Podman deployment details
-├── EXAMPLE_SCENARIO_SETUP.md    # Initial setup conversation example
-├── EXAMPLE_SCENARIO_PHONE.md    # Phone call verification example
+├── EXAMPLE_SCENARIO.md          # Setup and verification conversation example
 ├── Containerfile                # Podman container image definition
 └── container.sh                 # Container management script
 ```

@@ -349,11 +349,25 @@ See [AI_DISCLOSURE.md](./AI_DISCLOSURE.md) for full details.
 
 ---
 
-## Use Cases
+## Use Cases: Pre-Established Relationships Only
+
+### Critical Limitation
+
+Reality Check is **strictly peer-to-peer for personal trusted relationships**. Both parties must:
+1. Meet in-person or via video to exchange keys (one time)
+2. Both maintain the TOTP secret in their authenticator apps
+3. Both be available to verify during communications
+
+**This is NOT suitable for:**
+- Verifying strangers
+- Organizational/institutional authentication
+- One-to-many relationships (customer service, IT helpdesk, etc.)
+- General-purpose 2FA
+- Business systems or enterprise deployment
 
 ### Primary: Remote Identity Verification
 
-**Scenario**: Two people who know each other need to verify identity during remote communication.
+**Scenario**: Two people who already know each other need to verify identity during remote communication.
 
 **Examples**:
 - **Phone calls**: "Before we discuss this sensitive matter, let's verify. What's your code?"
@@ -364,30 +378,28 @@ See [AI_DISCLOSURE.md](./AI_DISCLOSURE.md) for full details.
 
 ### Who Benefits
 
-**1. Individuals in High-Risk Situations**
-- Journalists communicating with sources
-- Activists coordinating in hostile environments
-- High-net-worth individuals (targets for fraud)
-- Family members protecting against elder scams
+**Individuals with Trusted Contacts**
+- Journalists communicating with specific sources (after in-person key exchange)
+- Activists coordinating in hostile environments (within small trusted groups)
+- Family members protecting against impersonation (after setting up Reality Check together)
+- Business partners verifying each other during sensitive discussions
+- People with high-value accounts verifying their existing trusted contacts (financial advisors, attorneys, accountants, business associates)
+- Anyone concerned about deepfakes (within their existing contact network)
+- Individuals targeted by sophisticated social engineering (protecting existing relationships)
+- Those who value defense-in-depth security (for known contacts)
 
-**2. Organizations**
-- IT support verifying user identity before password resets
-- Finance teams confirming wire transfer requests
-- Legal teams verifying document signers
-- HR departments confirming employee identity remotely
-
-**3. Paranoid Realists**
-- Anyone concerned about deepfakes
-- People with high-value accounts (crypto, banking)
-- Individuals targeted by sophisticated social engineering
-- Those who value defense-in-depth security
+**Key Point**: This is for personal trusted relationships, not organizational deployment. Each relationship requires individual in-person key exchange. A group of 10 people requires 45 separate key exchanges (O(n²) scaling).
 
 ### What It's NOT For
 
 - ❌ Initial identity establishment (assumes pre-existing relationship)
 - ❌ Group authentication (pairwise only)
+- ❌ Organizational/institutional authentication systems
+- ❌ One-to-many relationships (customer service, IT helpdesk, etc.)
 - ❌ Continuous monitoring (discrete verification events)
 - ❌ Replacing end-to-end encryption (complementary, not substitute)
+- ❌ Verifying banks, government, or businesses
+- ❌ Stopping random scam calls from strangers
 
 ---
 

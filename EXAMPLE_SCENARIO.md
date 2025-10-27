@@ -158,17 +158,9 @@
 
 **Raj**: I've actually started sleeping better. I kept having this background anxiety about whether I'd recognize an impersonation. Now I don't have to worry.
 
-**Aisha**: Same. I got a call yesterday from someone claiming to be my bank. I asked them to verify with Reality Check.
+**Aisha**: Same. I'm thinking about setting this up with my parents too. That way when they get calls claiming to be from me, we can verify it's really me.
 
-**Raj**: *(laughs)* What did they say?
-
-**Aisha**: They hung up. Scam call.
-
-**Raj**: Perfect. That's exactly how it should work.
-
-**Aisha**: Yeah. I'm thinking about setting this up with my parents too. They're way more vulnerable to these kinds of scams.
-
-**Raj**: Good idea. My mom fell for a "Microsoft tech support" scam last year. This would have stopped it cold.
+**Raj**: Smart. My mom almost fell for someone impersonating my brother last month. Having a way to verify would have stopped it immediately.
 
 **Aisha**: Exactly. It's not just for us tech-paranoid people. It's for anyone who wants to know they're really talking to who they think they are.
 
