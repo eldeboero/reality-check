@@ -9,7 +9,7 @@
 ## What Was Human-Generated
 
 ✅ **Core Concept**: The idea of using shared TOTP codes for identity verification
-✅ **Architecture Decisions**: Stateless design, ephemeral keys, P-256 choice, 90-second window
+✅ **Architecture Decisions**: Stateless design, ephemeral keys, P-256 choice, standard 30-second TOTP period
 ✅ **Design Philosophy**: Privacy-first, zero-trust, no intermediaries
 ✅ **Security Model**: Threat model, trust bootstrapping approach
 ✅ **User Experience**: Workflow, interaction patterns

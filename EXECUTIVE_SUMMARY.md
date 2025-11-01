@@ -97,7 +97,7 @@ What's missing is a **lightweight, app-agnostic, human-verifiable authentication
 │ 5. Store in Authenticator App                                   │
 │    • Both parties add secret to Authy/Google Auth/1Password     │
 │    • Label: "RealityCheck: [Contact Name]"                      │
-│    • 90-second TOTP window (customizable, see rationale below)  │
+│    • Standard 30-second TOTP window                             │
 │    • Close Reality Check → ephemeral keys discarded             │
 └─────────────────────────────────────────────────────────────────┘
                               ↓
@@ -118,7 +118,7 @@ What's missing is a **lightweight, app-agnostic, human-verifiable authentication
 | **Crypto** | Web Crypto API | Browser-native, hardware-accelerated |
 | **Key Exchange** | P-256 ECDH | Universal browser support (iOS/Safari compatible) |
 | **Key Derivation** | HKDF-SHA256 | RFC 5869 standard, deterministic |
-| **TOTP** | RFC 6238 | Standard protocol, 90s window |
+| **TOTP** | RFC 6238 | Standard protocol, 30-second window |
 | **QR Codes** | jsQR (scan) + QRCode.js (generate) | Widely-used, well-tested libraries |
 | **PWA** | Service Worker | Offline capability, installable |
 | **Deployment** | Static hosting | No backend, no server-side logic |
@@ -215,55 +215,6 @@ Rather than building yet another TOTP app, Reality Check leverages existing, bat
 - Pure peer-to-peer trust
 - You trust who you exchange keys with, period
 - No third-party attestation or verification
-
----
-
-## Why 90-Second TOTP Window?
-
-### Standard vs. Reality Check
-
-- **Standard TOTP**: 30 seconds (protects automated server endpoints)
-- **Reality Check**: 90 seconds (optimizes for human-in-the-loop verification)
-
-### Reasoning
-
-**Traditional TOTP Threat Model**:
-- Automated server login endpoint
-- Attacker can repeatedly hammer endpoint with guesses
-- Short window limits replay attack window
-- 30 seconds is critical
-
-**Reality Check's Threat Model**:
-- Human-to-human comparison (no automated endpoint)
-- Both parties actively engaged (synchronous communication)
-- Real-time or near-real-time exchange (SMS, Slack, calls)
-- Humans need time to: unlock phone → open app → find entry → read code → type/speak it
-
-**Attack Analysis**:
-- **Replay attacks**: No automated endpoint to replay against
-- **Brute force**: 1 million possibilities, human would notice repeated guesses
-- **Within-window replay**: Requires two verification requests within 90 seconds (inherently suspicious)
-
-**Real-World Human Timing**:
-```
-Aisha: "Let's verify. My first three: 294"
-  ↓ (5-15s: message transit, notification)
-Raj unlocks phone
-  ↓ (3-5s: context switch)
-Raj opens authenticator
-  ↓ (5-10s: scroll, find entry)
-Raj reads code: "294817"
-  ↓ (5-10s: typing)
-Raj: "My last three: 817"
-  ↓ (5-15s: message transit)
-Aisha receives & confirms match
-
-Total: 28-55 seconds (best case)
-```
-
-With 30 seconds, codes frequently expire during typing. With 90 seconds, comfortable margin without meaningful security loss.
-
-**Result**: Better UX, no practical security reduction given the threat model.
 
 ---
 
@@ -451,7 +402,7 @@ Reality Check is **strictly peer-to-peer for personal trusted relationships**. B
 ### Key Security Properties
 
 - **Forward secrecy**: Lose device = old secrets invalid (need to re-exchange keys)
-- **Replay protection**: TOTP codes change every 90 seconds
+- **Replay protection**: TOTP codes change every 30 seconds
 - **MitM resistance**: If initial exchange is trusted, subsequent codes verify authenticity
 - **No central point of failure**: Pure P2P, no servers to compromise
 

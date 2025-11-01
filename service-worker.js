@@ -1,4 +1,5 @@
-const CACHE_NAME = 'reality-check-v15';
+// IMPORTANT: When updating version, also update APP_VERSION in app.js
+const CACHE_NAME = 'reality-check-v20';
 const urlsToCache = [
   '/',
   '/index.html',

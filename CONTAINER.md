@@ -164,7 +164,7 @@ When making changes to the PWA:
    podman build -t reality-check:latest .
    podman run -d --name reality-check -p 8080:80 reality-check:latest
    ```
-3. If service worker is caching old files, use the **"🔄 Clear Cache"** button in the app
+3. If service worker is caching old files, click the **"reload"** link at the bottom of the app (the app auto-updates but you can force a reload)
 
 ## Troubleshooting
 
@@ -234,13 +234,10 @@ For development purposes, **Python's HTTP server is the most reliable option** a
 ### Service Worker Not Registering
 - Check browser console for errors
 - Service workers work on localhost without HTTPS
-- Use the **"🔄 Clear Cache"** button in the app (available on all screens)
+- The app automatically checks for updates every 10 minutes
 
 ### Changes Not Appearing / Stuck on Old Version
-**Easy fix:** Use the **"🔄 Clear Cache"** button on any screen:
-- Setup screen (bottom)
-- Lock screen (bottom)
-- Main screen (header)
+**Easy fix:** Click the **"reload"** link at the bottom of the app page
 
 **Manual fix:**
 - Rebuild the container image

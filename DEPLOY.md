@@ -359,7 +359,7 @@ After deployment, verify these features work correctly:
 - [ ] Can click "Scan Their Key" button
 - [ ] Camera permission prompt appears
 - [ ] "How does this work?" link opens instructions
-- [ ] "Clear Cache" button works
+- [ ] "reload" link works at bottom of page
 
 ### ✅ Key Generation
 

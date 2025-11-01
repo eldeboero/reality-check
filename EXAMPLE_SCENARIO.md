@@ -36,7 +36,7 @@
 
 **Raj**: So we'd both see the same 6-digit code at any given time?
 
-**Aisha**: Right. And it changes every 90 seconds. So during a call, we just compare codes. If they match, we know it's really each other.
+**Aisha**: Right. And it changes every 30 seconds. So during a call, we just compare codes. If they match, we know it's really each other.
 
 **Raj**: *(thinks for a moment)* That's... actually pretty clever. And we're already sitting here, so we can do the setup now.
 
@@ -100,7 +100,7 @@
 
 **Raj**: What about after this? What if someone intercepts the codes during a call?
 
-**Aisha**: Doesn't matter. The codes change every 90 seconds. By the time an attacker could use an intercepted code, it's already expired.
+**Aisha**: Doesn't matter. The codes change every 30 seconds. By the time an attacker could use an intercepted code, it's already expired.
 
 **Raj**: *(impressed)* Okay, I'm sold. This is way better than just hoping I recognize your voice.
 

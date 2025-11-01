@@ -43,7 +43,7 @@ Reality Check is a stateless Progressive Web App that acts as a **cryptographic 
 - **🚫 No Data Storage**: Completely stateless - no localStorage, no encryption, no databases
 - **🤝 Pure P2P**: Direct key exchange via QR codes (no servers, no intermediaries)
 - **📱 Standard TOTP**: Works with any RFC 6238-compliant authenticator app
-- **⏱️ 90-Second Window**: Comfortable margin for real-time human verification
+- **⏱️ 30-Second Window**: Standard TOTP period for code generation
 - **🔒 Strong Crypto**: P-256 ECDH + HKDF-SHA256 (Web Crypto API)
 - **✈️ Offline Capable**: PWA with service worker - works completely offline
 - **🌐 Cross-Platform**: iOS, Android, desktop - single codebase
@@ -133,22 +133,11 @@ Reality Check is **not** a general-purpose authentication system. Here's what it
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
-│  6. Ongoing Verification (90-second window)                 │
+│  6. Ongoing Verification (30-second window)                 │
 │     During calls/chats: compare 6-digit codes               │
 │     Match = verified identity ✓                             │
 └─────────────────────────────────────────────────────────────┘
 ```
-
-### Why 90 Seconds?
-
-Unlike traditional TOTP (30 seconds), Reality Check uses a **90-second window** because:
-
-- ✅ No automated endpoint to attack (human-in-the-loop verification)
-- ✅ Comfortable margin for SMS, Slack, email exchanges
-- ✅ Accounts for typing, network delays, and the inherently slower pace of human communication
-- ✅ Still secure - no replay endpoint, both parties actively engaged
-
-**It's synchronous, just with human latency.** Both parties must be present in real-time; codes from different time windows won't match.
 
 ---
 
@@ -303,7 +292,7 @@ Raj: "Perfect. My last three: 817"
 Aisha: "Confirmed, that matches."
 ```
 
-**Note**: You have 90 seconds, so this works fine for async channels. The split pattern (3+3) makes it conversational even over text.
+**Note**: The split pattern (3+3) makes it conversational even over text.
 
 #### Video Call Verification
 
@@ -371,7 +360,7 @@ Show each other your authenticator app screens (just the 6-digit code, not the w
 | **Key Generation** | P-256 (secp256r1) | NIST curve, universal browser support |
 | **Key Exchange** | ECDH | Elliptic Curve Diffie-Hellman |
 | **Key Derivation** | HKDF-SHA256 | 160 bits (20 bytes) for TOTP |
-| **TOTP** | RFC 6238 | 90-second window, 6-digit codes |
+| **TOTP** | RFC 6238 | 30-second window, 6-digit codes |
 | **Fingerprints** | SHA-256 | First 16 hex chars for verbal verification |
 
 ### Why P-256 Instead of X25519?
@@ -477,11 +466,8 @@ A: No, it's different. E2EE protects *content*; Reality Check verifies *identity
 
 ### Technical
 
-**Q: Why 90 seconds instead of 30?**
-A: Traditional TOTP uses 30s to protect automated server endpoints. Reality Check has no server to attack—codes are compared human-to-human. 90 seconds provides comfortable margin for real-time verification (SMS/Slack typing delays, network latency) without meaningful security trade-off.
-
 **Q: Can I change the TOTP window?**
-A: Yes, but you'd need to modify `crypto.js:13` and ensure your authenticator app supports custom periods.
+A: The standard 30-second period is used for compatibility with all authenticator apps. If you need to change it, you'd need to modify your authenticator app settings and ensure both parties use the same custom period.
 
 **Q: Where are keys stored?**
 A: Nowhere. They exist only in JavaScript memory while the page is open.
@@ -527,7 +513,8 @@ A: iOS Safari compatibility. P-256 is universally supported.
 
 ### Service worker cache issues
 
-- Click "🔄 Clear Cache" button in the app
+- The app automatically checks for updates and reloads when new versions are available
+- To force a reload: click the "reload" link at the bottom of the page
 - Or manually: DevTools → Application → Clear Storage
 
 ---
