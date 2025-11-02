@@ -7,7 +7,7 @@
  */
 
 // Version should match service-worker.js CACHE_NAME
-const APP_VERSION = 'v20';
+const APP_VERSION = 'v22';
 
 class RealityCheckApp {
     constructor() {

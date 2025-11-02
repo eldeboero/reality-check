@@ -1,4 +1,19 @@
-# AI Disclosure
+# AI Disclosure & Legal Disclaimer
+
+## No Warranty
+
+**DISCLAIMER**: This software is provided "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+
+## User Responsibilities
+
+This cryptographic tool is intended for identity verification between parties who already know each other. Users are solely responsible for:
+
+- **Auditing the source code before use** - Do not trust; verify
+- **Understanding the cryptographic implementation** - Know what you're running
+- **Securing their TOTP secrets in authenticator apps** - Back up your authenticator app
+- **Verifying the authenticity of the code** - We recommend forking and self-hosting
+
+---
 
 ## Full Transparency About This Project
 

@@ -8,28 +8,22 @@ Reality Check helps you verify your most valuable, trusted contacts when you can
 
 > **⚠️ AI-Generated Code Disclosure**
 >
-> All code in this project was generated using AI assistance. While human-directed, the implementation has not been professionally audited. **You should review the code before using it** and consider hosting your own instance. See [AI_DISCLOSURE.md](./AI_DISCLOSURE.md) for full transparency about development and recommendations.
+> All code in this project was generated using AI assistance. **You should review the code before using it** and consider hosting your own instance. See [AI_DISCLOSURE.md](./AI_DISCLOSURE.md) for full transparency about development and recommendations.
 
 ---
 
 ## Documentation
 
-This project includes comprehensive documentation for different audiences:
-
 **Getting Started**:
-- **[README.md](./README.md)** (this file) - Complete user guide, setup instructions, FAQ
-- **[EXAMPLE_SCENARIO.md](./EXAMPLE_SCENARIO.md)** - Real conversation showing initial setup and test verification call
-
-**Technical Details**:
-- **[EXECUTIVE_SUMMARY.md](./EXECUTIVE_SUMMARY.md)** - One-page technical overview (threat model, architecture, cryptography)
-
-**Transparency**:
-- **[AI_DISCLOSURE.md](./AI_DISCLOSURE.md)** - Full transparency about AI-generated code and recommendations
-- **[LICENSE](./LICENSE)** - AGPL v3 license terms and rationale
+- **[README.md](./README.md)** (this file) - User guide and FAQ
+- **[EXAMPLE_SCENARIO.md](./EXAMPLE_SCENARIO.md)** - Real conversation showing setup and verification
 
 **Deployment**:
-- **[DEPLOY.md](./DEPLOY.md)** - Deployment guide for all platforms (GitHub Pages, Netlify, Vercel, Podman, etc.)
-- **[CONTAINER.md](./CONTAINER.md)** - Podman container deployment details and troubleshooting
+- **[DEPLOY.md](./DEPLOY.md)** - All deployment methods (GitHub Pages, Netlify, Vercel, Podman, etc.)
+
+**Transparency**:
+- **[AI_DISCLOSURE.md](./AI_DISCLOSURE.md)** - AI-generated code disclosure and legal disclaimer
+- **[LICENSE](./LICENSE)** - AGPL v3 license terms
 
 ---
 
@@ -63,81 +57,14 @@ Reality Check is a stateless Progressive Web App that acts as a **cryptographic 
 
 ---
 
-## What Reality Check Is NOT
-
-Reality Check is **not** a general-purpose authentication system. Here's what it cannot do:
-
-### ❌ Cannot Verify Strangers
-- No "instant verification" of unknown callers
-- Both parties must pre-exchange keys in person or video
-- Requires pre-established trust relationship
-
-### ❌ Cannot Scale to One-to-Many
-- Not suitable for customer service (1 representative, many customers)
-- Not suitable for IT departments (1 technician, hundreds of employees)
-- Each relationship requires individual key exchange
-- 10 people = 45 pairwise key exchanges needed
-
-### ❌ Cannot Stop Random Scam Calls
-- Only verifies people you've already set up with
-- Cannot verify banks, government agencies, or businesses (unless you personally set it up with a specific representative)
-- Cannot replace caller ID or other first-line defenses
-
-### ❌ Not a Replacement for 2FA
-- This is for human-to-human verification only
-- Cannot authenticate you to websites or services
-- Works alongside (not instead of) traditional 2FA
-
-### ✅ What It IS Good For
-- Verifying a trusted contact during remote communication
-- Protecting against impersonation of people you already know
-- Adding cryptographic certainty to voice/text conversations with specific individuals
-- Small teams where everyone has met in person
-
----
-
 ## How It Works
 
-### Cryptographic Flow
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  1. Key Generation (P-256 ECDH)                             │
-│     Each user generates ephemeral keypair in browser        │
-│     Keys exist only in memory (never saved)                 │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│  2. Key Exchange (QR Codes)                                 │
-│     Aisha shows QR → Raj scans                              │
-│     Raj shows QR → Aisha scans                              │
-│     (In person or via video call)                           │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│  3. Shared Secret (ECDH)                                    │
-│     ECDH(Aisha's private, Raj's public) =                   │
-│     ECDH(Raj's private, Aisha's public)                     │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│  4. TOTP Secret Derivation (HKDF-SHA256)                    │
-│     HKDF(shared_secret, sorted_public_keys) → Base32        │
-│     Deterministic: both parties derive identical secret     │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│  5. Add to Authenticator App                                │
-│     Both users add TOTP secret to Authy/Google Auth/etc.    │
-│     Close Reality Check → ephemeral keys discarded          │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│  6. Ongoing Verification (30-second window)                 │
-│     During calls/chats: compare 6-digit codes               │
-│     Match = verified identity ✓                             │
-└─────────────────────────────────────────────────────────────┘
-```
+1. **Generate Keys**: Each person generates an ephemeral P-256 ECDH keypair in their browser
+2. **Exchange Keys**: Show/scan QR codes (in person or video call)
+3. **Derive Secret**: Both browsers compute the same TOTP secret using ECDH + HKDF
+4. **Add to Authenticator**: Both add the secret to their authenticator app (Authy, Google Authenticator, etc.)
+5. **Discard Keys**: Close Reality Check → all cryptographic material is deleted
+6. **Verify Anytime**: During future calls/messages, compare 6-digit codes from authenticator apps
 
 ---
 
@@ -199,37 +126,13 @@ During future phone calls, video chats, or live messages:
 
 ---
 
-## Deployment Options
+## Deployment
 
-### GitHub Pages (Recommended)
-
-1. Fork this repository
-2. Go to Settings → Pages
-3. Deploy from `main` branch
-4. Access at `https://yourusername.github.io/reality-check/`
-
-### Self-Hosting
-
-**Using the Podman container:**
-```bash
-# Build and run
-./container.sh rebuild
-
-# Access at http://localhost:8080
-```
-
-**Using Python:**
-```bash
-python3 -m http.server 8080
-```
-
-**Other static hosts:**
-- Netlify (drag & drop)
-- Vercel (connect Git repo)
-- Cloudflare Pages
-- Any static web server
-
-**Important**: PWA features require HTTPS in production (localhost is exempt for development).
+See **[DEPLOY.md](./DEPLOY.md)** for comprehensive deployment instructions including:
+- GitHub Pages (recommended)
+- Netlify, Vercel, Cloudflare Pages
+- Podman container
+- Traditional web servers (nginx, Apache, Caddy)
 
 ---
 
@@ -237,66 +140,24 @@ python3 -m http.server 8080
 
 ### Setting Up a New Contact
 
-#### Step 1: Initial Key Exchange (In Person or Video)
-
-**Why in person or video?**
-This bootstraps trust. If someone intercepts your *first* exchange, they can impersonate you forever. Do it on a video call where you can see each other's faces, or in person.
-
-**The Process:**
+**Do this in person or on video** (seeing faces). If your first exchange is intercepted, the attacker can impersonate you forever.
 
 1. Both people open Reality Check
-2. **Person A**: "Show My Key" → displays QR code
-3. **Person B**: "Scan Their Key" → scans A's QR code
-4. **Person B** sees: "✅ TOTP Secret Generated"
-5. **Person B**: "Copy Secret" → adds to authenticator app
-6. **Reverse**: Person B shows key, Person A scans
-7. Both have now added the shared secret to their authenticator apps
+2. Person A: "Show My Key" → displays QR code
+3. Person B: "Scan Their Key" → scans A's QR code
+4. Person B: Copy secret → add to authenticator app (label: "RealityCheck: [Name]")
+5. Reverse: Person B shows key, Person A scans and adds to authenticator
+6. Test: Compare codes to verify they match
 
-**Both parties must complete the exchange!** Otherwise codes won't match.
-
-#### Step 2: Name the Entry
-
-In your authenticator app, label it clearly:
-- ✅ "RealityCheck: Mom"
-- ✅ "RC: Raj (Work)"
-- ✅ "Verify: Aisha"
-
-#### Step 3: Test It
-
-Do a quick test:
-1. Both open authenticator apps
-2. Find the entry
-3. Confirm you see the same 6-digit code
-4. If they match, you're set! ✅
+**Both must complete the exchange** or codes won't match!
 
 ### Verifying During Communications
 
-#### Phone Call Verification
+During calls or messages, both people open their authenticator apps and compare codes:
 
-```
-Aisha: "Hey Raj, can you verify?"
-Raj:   "Sure, let me check... my first three: 742"
-Aisha: "And my last three: 891"
-Raj:   "Perfect, that matches. Confirmed."
-```
+**Best Practice**: Split the code (first 3 / last 3 digits). Example: "My first three: 742" / "My last three: 891"
 
-**Best practice**: Split the code (first 3 / last 3 digits). Each person recites half, making it conversational and easier to verify.
-
-#### Text/Slack/Email Verification
-
-```
-Aisha: "Hey Raj - let's verify. My first three: 294"
-(Raj checks authenticator app)
-Raj: "Perfect. My last three: 817"
-(Aisha verifies the full code: 294817)
-Aisha: "Confirmed, that matches."
-```
-
-**Note**: The split pattern (3+3) makes it conversational even over text.
-
-#### Video Call Verification
-
-Show each other your authenticator app screens (just the 6-digit code, not the whole screen).
+**Any Channel Works**: Phone, video, text, email, Slack. The split pattern makes it conversational.
 
 ### When Codes Don't Match
 
@@ -341,63 +202,24 @@ Show each other your authenticator app screens (just the 6-digit code, not the w
 
 ### Best Practices
 
-1. **🎥 First Exchange Via Video**: See each other's faces when exchanging keys
-2. **🔢 Test Immediately**: Verify codes match right after setup
-3. **📱 Lock Your Phone**: Protect your authenticator app with a strong PIN/biometric
-4. **🔄 Verify Regularly**: Make it a habit on important calls
-5. **⏰ Sync Device Time**: Ensure both devices use network time
-6. **🚫 Don't Share Screens**: Keep TOTP codes private during verification
-7. **👥 One Contact at a Time**: Don't try to verify multiple people simultaneously
+1. First exchange via video (see faces) or in person
+2. Test immediately after setup
+3. Lock your phone and authenticator app
+4. Verify regularly on important calls
+5. Sync device time to network
+6. Don't share screens during verification
 
 ---
 
 ## Technical Details
 
-### Cryptographic Primitives
+**Cryptography**: P-256 ECDH key exchange → HKDF-SHA256 derivation → RFC 6238 TOTP (30-second window). All operations use the browser's native Web Crypto API.
 
-| Operation | Algorithm | Details |
-|-----------|-----------|---------|
-| **Key Generation** | P-256 (secp256r1) | NIST curve, universal browser support |
-| **Key Exchange** | ECDH | Elliptic Curve Diffie-Hellman |
-| **Key Derivation** | HKDF-SHA256 | 160 bits (20 bytes) for TOTP |
-| **TOTP** | RFC 6238 | 30-second window, 6-digit codes |
-| **Fingerprints** | SHA-256 | First 16 hex chars for verbal verification |
+**Architecture**: Completely stateless. Keys exist only in JavaScript memory during the page session. No localStorage, no persistence, no encryption layer. Single-screen UI with QR code exchange.
 
-### Why P-256 Instead of X25519?
+**Browser Support**: Chrome/Edge/Firefox 90+, Safari/iOS 14+. Requires Web Crypto API, getUserMedia (camera), and Service Workers (PWA).
 
-P-256 was chosen for **universal browser compatibility**, especially iOS/Safari. X25519 is faster and more modern, but not supported on all mobile browsers as of 2025.
-
-### Architecture
-
-**Stateless Design:**
-- No `localStorage` usage
-- No data persistence
-- No encryption layer (nothing to encrypt)
-- Keys exist only in JavaScript memory during page session
-
-**Single Screen:**
-- Two buttons: "Show My Key" and "Scan Their Key"
-- Dynamic content area for QR codes, scanner, and results
-- No navigation, no tabs, no complex UI
-
-**Dependencies:**
-- `jsQR` (QR code scanning from camera)
-- `QRCode.js` (QR code generation)
-- Web Crypto API (all cryptographic operations)
-- getUserMedia (camera access)
-
-### Browser Compatibility
-
-**Minimum versions:**
-- Chrome/Edge 90+
-- Firefox 90+
-- Safari 14+ (iOS 14+)
-- Android Browser 90+
-
-**Required APIs:**
-- Web Crypto API (P-256 support)
-- getUserMedia (camera access)
-- Service Workers (for PWA)
+**Why P-256?** Universal browser compatibility, especially iOS/Safari. X25519 would be faster but lacks Safari support as of 2025.
 
 ---
 
@@ -414,12 +236,11 @@ reality-check/
 ├── icon-192.png                 # PWA icon (192x192)
 ├── icon-512.png                 # PWA icon (512x512)
 ├── LICENSE                      # AGPL v3
-├── README.md                    # This file (start here!)
-├── EXECUTIVE_SUMMARY.md         # One-page technical overview
-├── AI_DISCLOSURE.md             # Transparency about AI-generated code
+├── README.md                    # This file (user guide & FAQ)
+├── AI_DISCLOSURE.md             # Transparency & legal disclaimer
 ├── DEPLOY.md                    # Deployment guide (all platforms)
-├── CONTAINER.md                 # Podman deployment details
-├── EXAMPLE_SCENARIO.md          # Setup and verification conversation example
+├── EXAMPLE_SCENARIO.md          # Setup and verification walkthrough
+├── CLAUDE.md                    # Developer guide (for code contributors)
 ├── Containerfile                # Podman container image definition
 └── container.sh                 # Container management script
 ```
@@ -428,55 +249,23 @@ reality-check/
 
 ## FAQ
 
-### General Usage
-
 **Q: Do I need to keep Reality Check open after setup?**
-A: No! Once you've added the TOTP secret to your authenticator app, you can close Reality Check. All keys are discarded.
-
-**Q: How many contacts can I set up?**
-A: Unlimited. Each contact gets their own entry in your authenticator app.
-
-**Q: Can I verify multiple people at once?**
-A: No. Verification is pairwise (Aisha↔Raj, Aisha↔Jordan, Raj↔Jordan).
+A: No. Once you've added the TOTP secret to your authenticator app, close it. All keys are discarded.
 
 **Q: What if I switch to a new phone?**
-A: You'll need to:
-1. Restore your authenticator app backup (most apps support cloud backup)
-2. OR re-exchange keys with all your contacts
+A: Restore your authenticator app backup, or re-exchange keys with all contacts.
 
 **Q: Do I need internet for verification?**
-A: No. Once keys are exchanged, verification works completely offline.
-
-**Q: Can I use this for initial contact with strangers?**
-A: No. This assumes you already know the person. It's for ongoing verification, not initial identity establishment.
-
-### Security
+A: No. Verification works completely offline once keys are exchanged.
 
 **Q: What if someone steals my phone?**
-A: They could see your verification codes. Use a strong lock screen PIN/biometric. Consider this similar to someone stealing your physical ID.
-
-**Q: Can quantum computers break this?**
-A: Eventually, yes (P-256 is vulnerable to Shor's algorithm). But so is almost everything else. Post-quantum migration would require browser API updates.
-
-**Q: Why not just use Signal safety numbers?**
-A: Reality Check works *outside* of Signal - for phone calls, SMS, email, Slack, etc. It's complementary.
-
-**Q: Is this better than end-to-end encryption?**
-A: No, it's different. E2EE protects *content*; Reality Check verifies *identity*. Use both.
-
-### Technical
-
-**Q: Can I change the TOTP window?**
-A: The standard 30-second period is used for compatibility with all authenticator apps. If you need to change it, you'd need to modify your authenticator app settings and ensure both parties use the same custom period.
+A: They could see your verification codes. Use a strong lock screen PIN/biometric.
 
 **Q: Where are keys stored?**
 A: Nowhere. They exist only in JavaScript memory while the page is open.
 
-**Q: Can I audit the code?**
-A: Yes! It's open source (AGPL v3). See [GitHub](https://github.com/eldeboero/reality-check).
-
-**Q: Why P-256 instead of Ed25519/X25519?**
-A: iOS Safari compatibility. P-256 is universally supported.
+**Q: Why not just use Signal safety numbers?**
+A: Reality Check works outside of Signal - for phone calls, SMS, email, Slack, etc. It's complementary.
 
 ---
 
@@ -535,24 +324,7 @@ A: iOS Safari compatibility. P-256 is universally supported.
 
 ## License
 
-**GNU Affero General Public License v3.0 (AGPL-3.0)**
-
-This project is licensed under AGPL v3, which means:
-
-- ✅ **Free and open source** - anyone can use, modify, distribute
-- ✅ **Strong copyleft** - modifications must be shared under same license
-- ✅ **Network provision** - even running as a web service requires source disclosure
-- ❌ **Cannot be proprietary** - can't be included in closed-source products
-
-**Why AGPL?**
-
-This license was deliberately chosen to:
-- Protect the privacy-first mission
-- Prevent commercial entities from building closed-source services around it
-- Ensure any improvements benefit the community
-- Maintain transparency and auditability of cryptographic implementation
-
-See [LICENSE](./LICENSE) for full terms.
+Licensed under **AGPL v3** (GNU Affero General Public License). Free and open source. Modifications must be shared under the same license, even when running as a web service. See [LICENSE](./LICENSE) for full terms.
 
 ---
 
@@ -568,38 +340,6 @@ This project welcomes contributions:
 **Important**: All code in this project was AI-generated. Review is especially encouraged! See [AI_DISCLOSURE.md](./AI_DISCLOSURE.md) for details.
 
 **Security vulnerabilities**: Please report privately to the maintainer before public disclosure.
-
----
-
-## Related Projects
-
-- **Signal**: End-to-end encrypted messaging with safety numbers
-- **Authy / Google Authenticator**: TOTP authenticator apps
-- **Keybase**: Identity verification with cryptographic proofs
-- **WireGuard**: VPN with noise protocol
-
----
-
-## Support
-
-**For issues:**
-1. Check the [Troubleshooting](#troubleshooting) section
-2. Review the [FAQ](#faq)
-3. Ensure browser compatibility
-4. Open an issue on [GitHub](https://github.com/eldeboero/reality-check/issues)
-
-**This is a self-hosted, privacy-focused tool.** No support hotline, but the design is simple enough to troubleshoot independently.
-
----
-
-## Acknowledgments
-
-Built with:
-- [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
-- [jsQR](https://github.com/cozmo/jsQR) by Cosmo Wolfe
-- [QRCode.js](https://davidshimjs.github.io/qrcodejs/) by Sangmin Shim
-
-Inspired by the need for lightweight, zero-trust identity verification in an era of deepfakes and SIM swaps.
 
 ---
 
