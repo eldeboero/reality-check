@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Verify identities remotely using cryptographic keys and TOTP">
+    <meta name="description" content="A truly stateless broker for personal 2FA">
     <meta name="theme-color" content="#1a1a2e">
     <title>Reality Check</title>
     <link rel="manifest" href="manifest.json">
@@ -14,7 +14,7 @@
         <!-- Single Main Screen -->
         <header>
             <h1>Reality Check</h1>
-            <p class="subtitle">Shared 2FA Codes for Human Verification</p>
+            <p class="subtitle">Protect your most important relationships from impersonation attacks</p>
         </header>
 
         <div class="container">
@@ -28,16 +28,18 @@
                 </button>
             </div>
 
-            <!-- Dynamic Status/Result Area -->
-            <div id="status-area" class="status-area">
-                <!-- Content dynamically injected by app.js -->
-            </div>
+            <!-- Dynamic Status/Result Area (content dynamically injected by app.js) -->
+            <div id="status-area" class="status-area"></div>
 
             <!-- Footer Actions -->
             <div class="footer-actions">
                 <a href="#" id="instructions-link" class="help-link">How does this work?</a>
-                <button id="clear-cache-btn" class="btn-secondary btn-small">🔄 Clear Cache</button>
             </div>
+
+            <!-- Version Info -->
+            <p class="version-info">
+                <span id="app-version"></span> · <a href="#" id="reload-link">reload</a>
+            </p>
 
             <!-- Legal Disclaimer -->
             <p class="disclaimer">

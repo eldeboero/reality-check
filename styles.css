@@ -230,7 +230,7 @@ body {
     align-items: center;
     gap: 15px;
     margin-top: 30px;
-    padding-top: 20px;
+    padding-top: 15px;
     border-top: 1px solid var(--border-color);
 }
 
@@ -248,14 +248,34 @@ body {
     text-decoration: underline;
 }
 
+/* Version info */
+.version-info {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 25px;
+    margin-bottom: 3px;
+    opacity: 0.6;
+}
+
+.version-info a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.version-info a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
 /* Legal disclaimer */
 .disclaimer {
     text-align: center;
     font-size: 0.8rem;
     color: var(--text-muted);
-    margin-top: 20px;
+    margin-top: 0;
     margin-bottom: 0;
-    padding: 15px 10px;
+    padding: 5px 10px 15px;
     opacity: 0.8;
 }
 

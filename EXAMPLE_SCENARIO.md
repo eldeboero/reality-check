@@ -36,7 +36,7 @@
 
 **Raj**: So we'd both see the same 6-digit code at any given time?
 
-**Aisha**: Right. And it changes every 90 seconds. So during a call, we just compare codes. If they match, we know it's really each other.
+**Aisha**: Right. And it changes every 30 seconds. So during a call, we just compare codes. If they match, we know it's really each other.
 
 **Raj**: *(thinks for a moment)* That's... actually pretty clever. And we're already sitting here, so we can do the setup now.
 
@@ -100,7 +100,7 @@
 
 **Raj**: What about after this? What if someone intercepts the codes during a call?
 
-**Aisha**: Doesn't matter. The codes change every 90 seconds. By the time an attacker could use an intercepted code, it's already expired.
+**Aisha**: Doesn't matter. The codes change every 30 seconds. By the time an attacker could use an intercepted code, it's already expired.
 
 **Raj**: *(impressed)* Okay, I'm sold. This is way better than just hoping I recognize your voice.
 
@@ -186,43 +186,6 @@
 4. **Peace of Mind**: Eliminated background anxiety about impersonation
 5. **Network Effect**: Started thinking about setting up with other contacts
 
----
-
-## Common Questions (Answered During Setup)
-
-### "What if I lose my phone?"
-
-**Aisha**: Your authenticator app is backed up, right? Authy has cloud backup, Google Authenticator can sync, 1Password stores it in your vault.
-
-**Raj**: Oh right, yeah. So even if I lose my phone, I can restore the authenticator app and the codes will still work.
-
-**Aisha**: Exactly. Or we just meet up again and re-exchange keys. Takes two minutes.
-
----
-
-### "What if someone steals my phone?"
-
-**Raj**: If someone has my unlocked phone, they can see my codes.
-
-**Aisha**: True, but they'd need to know which TOTP entry to look at. And your phone is locked with a PIN or biometric, right?
-
-**Raj**: Yeah, and my authenticator app has its own PIN too.
-
-**Aisha**: So they'd have to: unlock your phone, unlock your authenticator app, and know to look for "RealityCheck: Aisha." That's a lot of barriers.
-
-**Raj**: Fair point. And if my phone is stolen, I'm immediately resetting everything anyway.
-
----
-
-### "What if we want to add more people?"
-
-**Aisha**: It's pairwise. So if you want to set this up with Jordan, you and Jordan exchange keys separately.
-
-**Raj**: So I'd have "RealityCheck: Aisha" and "RealityCheck: Jordan" in my app?
-
-**Aisha**: Right. Each relationship is independent. Jordan and I would have our own shared secret if we wanted to verify each other.
-
-**Raj**: Makes sense. Keeps it simple.
 
 ---
 

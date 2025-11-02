@@ -6,6 +6,9 @@
  * Keys exist only in memory during the session
  */
 
+// Version should match service-worker.js CACHE_NAME
+const APP_VERSION = 'v22';
+
 class RealityCheckApp {
     constructor() {
         // Ephemeral state (memory only, never persisted)
@@ -23,8 +26,33 @@ class RealityCheckApp {
         // Register service worker for offline capability
         if ('serviceWorker' in navigator) {
             try {
-                await navigator.serviceWorker.register('/service-worker.js');
+                const registration = await navigator.serviceWorker.register('/service-worker.js');
                 console.log('Service Worker registered');
+
+                // Check for updates on page load
+                registration.update();
+
+                // Listen for service worker updates
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'activated' && navigator.serviceWorker.controller) {
+                            // New service worker activated, reload to get fresh content
+                            console.log('New version available, reloading...');
+                            this.showToast('Update available! Reloading...', 'info');
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 1000);
+                        }
+                    });
+                });
+
+                // Also check for updates periodically (every 10 minutes)
+                setInterval(() => {
+                    registration.update();
+                }, 10 * 60 * 1000);
+
             } catch (error) {
                 console.error('Service Worker registration failed:', error);
             }
@@ -32,6 +60,14 @@ class RealityCheckApp {
 
         this.attachEventListeners();
         this.showWelcomeMessage();
+        this.displayVersion();
+    }
+
+    displayVersion() {
+        const versionElement = document.getElementById('app-version');
+        if (versionElement) {
+            versionElement.textContent = APP_VERSION;
+        }
     }
 
     showWelcomeMessage() {
@@ -83,8 +119,11 @@ class RealityCheckApp {
             this.showInstructions();
         });
 
-        // Clear cache button
-        document.getElementById('clear-cache-btn').addEventListener('click', () => this.clearCache());
+        // Reload link
+        document.getElementById('reload-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.reload();
+        });
     }
 
     async showMyKey() {
@@ -304,47 +343,6 @@ class RealityCheckApp {
         document.getElementById('done-btn').addEventListener('click', () => {
             this.showWelcomeMessage();
         });
-    }
-
-    async clearCache() {
-        // Confirm before clearing cache
-        const confirmed = confirm(
-            '⚠️ Clear Cache?\n\n' +
-            'This will temporarily remove offline functionality and reload the app.\n\n' +
-            'Make sure you have internet access before proceeding.\n\n' +
-            'Continue?'
-        );
-
-        if (!confirmed) {
-            return;
-        }
-
-        try {
-            // Clear all caches
-            if ('caches' in window) {
-                const cacheNames = await caches.keys();
-                await Promise.all(cacheNames.map(name => caches.delete(name)));
-                console.log('Cleared all caches:', cacheNames);
-            }
-
-            // Unregister service worker
-            if ('serviceWorker' in navigator) {
-                const registrations = await navigator.serviceWorker.getRegistrations();
-                await Promise.all(registrations.map(reg => reg.unregister()));
-                console.log('Unregistered service workers');
-            }
-
-            this.showToast('Cache cleared! Reloading...', 'success');
-
-            // Reload page after short delay
-            setTimeout(() => {
-                window.location.reload();
-            }, 1000);
-
-        } catch (error) {
-            console.error('Clear cache error:', error);
-            this.showToast('Error clearing cache', 'error');
-        }
     }
 
     showToast(message, type = 'info') {

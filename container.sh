@@ -302,7 +302,7 @@ Examples:
 Development Workflow:
   1. Make code changes
   2. ./container.sh rebuild           # Rebuild and restart
-  3. Use "Clear Cache" button in app  # Refresh service worker
+  3. Click "reload" link in app       # Force reload (or wait for auto-update)
 
 Notes:
   - Container runs nginx serving the PWA on port 80 internally
